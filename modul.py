@@ -1,8 +1,20 @@
 import random
 
 mode = "e_see"
-
+ball_in_second = 1
 b = []
+
+
+def plus_ball():
+    global ball_in_second
+    ball_in_second = ball_in_second + 1
+
+
+def minus_ball():
+    global ball_in_second
+    ball_in_second = ball_in_second - 1
+    if ball_in_second<0:
+        ball_in_second=0
 
 
 def all_in_modul():

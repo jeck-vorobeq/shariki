@@ -3,7 +3,7 @@ import pygame, modul
 pygame.init()
 screen = pygame.display.set_mode([500, 500])
 pygame.display.set_caption("БЕЗУМИЕ")
-answered = pygame.font.SysFont("Arial", 25,True)
+answered = pygame.font.SysFont("Arial", 25, True)
 r = 200
 g = 200
 b = 200
@@ -16,8 +16,10 @@ def weiv():
     for a in modul.b:
         pygame.draw.circle(screen, a["rgb"], [a["x"], a["y"]], a["size"])
     if modul.mode == "e_see":
-        text = answered.render("Эту надпись можно закрыть нажав E", True, [r, g, b],[0,0,0])
+        text = answered.render("Эту надпись можно закрыть нажав E", True, [r, g, b], [0, 0, 0])
         screen.blit(text, [12, 12])
-        text = answered.render("на экране "+str(len(modul.b))+" шариков",True,[r,g,b],[0,0,0])
+        text = answered.render("на экране " + str(len(modul.b)) + " шариков", True, [r, g, b], [0, 0, 0])
         screen.blit(text, [12, 37])
+        text = answered.render(str(modul.ball_in_second) + " шариков в секунду", True, [r, g, b], [0, 0, 0])
+        screen.blit(text, [12, 64])
     pygame.display.flip()
