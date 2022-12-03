@@ -3,7 +3,7 @@ import pygame.event, modul
 pygame.init()
 timer = pygame.event.custom_type()
 pygame.time.set_timer(timer,1000)
-
+pygame.key.set_repeat(90)
 
 def ypravlrnie():
     global ball_in_second

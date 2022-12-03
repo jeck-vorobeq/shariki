@@ -45,13 +45,16 @@ def otbivka(ball):
 
 
 def new_ball():
-    ball = {
-        "x": random.randint(14, 486),
-        "y": random.randint(14, 486),
-        "size": random.randint(5, 14),
-        "speed_x": random.randint(-9, 9),
-        "speed_y": random.randint(-9, 9),
-        "rgb": [random.randint(1, 255), random.randint(1, 255), random.randint(1, 255)]
+     for i in range(ball_in_second):
+         ball = {
+             "x": random.randint(14, 486),
+             "y": random.randint(14, 486),
+             "size": random.randint(5, 14),
+             "speed_x": random.randint(-9, 9),
+             "speed_y": random.randint(-9, 9),
+             "rgb": [random.randint(1, 255), random.randint(1, 255), random.randint(1, 255)]
 
-    }
-    b.append(ball)
+         }
+
+         b.append(ball)
+
