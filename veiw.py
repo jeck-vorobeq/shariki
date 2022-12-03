@@ -2,7 +2,7 @@ import pygame, modul
 
 pygame.init()
 screen = pygame.display.set_mode([500, 500])
-pygame.display.set_caption("БЕЗУМИЕ")
+pygame.display.set_caption("medition")
 answered = pygame.font.SysFont("Arial", 25, True)
 r = 200
 g = 200
