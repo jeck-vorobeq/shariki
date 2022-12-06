@@ -23,3 +23,5 @@ def ypravlrnie():
                 modul.plus_ball()
             if wq.key == pygame.K_DOWN:
                 modul.minus_ball()
+            if wq.key == pygame.K_g:
+                modul.toggle_fullscreen()
