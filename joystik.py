@@ -25,3 +25,9 @@ def ypravlrnie():
                 modul.minus_ball()
             if wq.key == pygame.K_g:
                 modul.toggle_fullscreen()
+            if wq.key == pygame.K_DELETE:
+                modul.delete_all_balls()
+            if wq.key == pygame.K_1:
+                modul.balls_stop()
+            if wq.key == pygame.K_2:
+                modul.balls_move()

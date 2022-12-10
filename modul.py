@@ -1,7 +1,7 @@
 import random
 
 import pygame.display
-
+rEGIM="move"
 screen_width, screen_height = [500,500]
 mode = "e_see"
 ball_in_second = 1
@@ -18,6 +18,12 @@ def minus_ball():
     ball_in_second = ball_in_second - 1
     if ball_in_second < 0:
         ball_in_second = 0
+def balls_stop():
+    global rEGIM
+    rEGIM="stop"
+def balls_move():
+    global rEGIM
+    rEGIM="move"
 
 def toggle_fullscreen():
     global screen_height,screen_width
@@ -28,8 +34,9 @@ def toggle_fullscreen():
     screen_height = screen.get_height()
     screen_width = screen.get_width()
 def all_in_modul():
-    for a in b:
-        otbivka(a)
+    if rEGIM=="move":
+        for a in b:
+            move(a)
 
 
 def modes():
@@ -41,7 +48,7 @@ def modes():
         mode = "e_see"
 
 
-def otbivka(ball):
+def move(ball):
     ball["x"] = ball["x"] + ball["speed_x"]
     ball["y"] = ball["y"] + ball["speed_y"]
     if ball["x"] >= screen_width - ball["size"]:
@@ -70,3 +77,6 @@ def new_ball():
         }
 
         b.append(ball)
+
+def delete_all_balls():
+    b.clear()
