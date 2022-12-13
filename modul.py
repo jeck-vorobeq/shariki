@@ -42,8 +42,17 @@ def toggle_fullscreen():
 
 
 def all_in_modul():
-    if rEGIM == "fly":
-        balls_can_fly()
+    if rEGIM == "fly_up":
+        balls_can_fly_up()
+
+    if rEGIM == "fly_down":
+        balls_can_fly_down()
+
+    if rEGIM == "fly_left":
+        balls_can_fly_left()
+
+    if rEGIM == "fly_right":
+        balls_can_fly_right()
     if rEGIM == "move":
         for a in b:
             move(a)
@@ -95,12 +104,44 @@ def delete_all_balls():
     b.clear()
 
 
-def balls_fly():
+def balls_fly_up():
     global rEGIM
-    rEGIM = "fly"
+    rEGIM = "fly_up"
 
 
-def balls_can_fly():
+def balls_can_fly_up():
 
     for f in b:
         f["y"]=f["y"]-1
+
+
+def balls_fly_down():
+    global rEGIM
+    rEGIM = "fly_down"
+
+
+def balls_can_fly_down():
+
+    for f in b:
+        f["y"]=f["y"]+1
+
+def balls_fly_left():
+    global rEGIM
+    rEGIM = "fly_left"
+
+
+def balls_can_fly_left():
+
+    for f in b:
+        f["x"]=f["x"]-1
+
+
+def balls_fly_right():
+    global rEGIM
+    rEGIM = "fly_right"
+
+
+def balls_can_fly_right():
+
+    for f in b:
+        f["x"]=f["x"]+1
