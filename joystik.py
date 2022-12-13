@@ -31,3 +31,5 @@ def ypravlrnie():
                 modul.balls_stop()
             if wq.key == pygame.K_2:
                 modul.balls_move()
+            if wq.key == pygame.K_3:
+                modul.balls_fly()
