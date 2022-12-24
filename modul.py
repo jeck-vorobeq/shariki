@@ -2,6 +2,7 @@ import random
 
 import pygame.display
 
+rEGIM_fly = ""
 rEGIM = "move"
 screen_width, screen_height = [500, 500]
 mode = "e_see"
@@ -42,17 +43,11 @@ def toggle_fullscreen():
 
 
 def all_in_modul():
-    if rEGIM == "fly_up":
-        balls_can_fly_up()
-
-    if rEGIM == "fly_down":
-        balls_can_fly_down()
-
-    if rEGIM == "fly_left":
-        balls_can_fly_left()
-
-    if rEGIM == "fly_right":
-        balls_can_fly_right()
+    print(rEGIM, rEGIM_fly)
+    if rEGIM == "fly":
+        balls_can_fly()
+    if rEGIM == "special":
+        balls_special_up()
     if rEGIM == "move":
         for a in b:
             move(a)
@@ -74,25 +69,26 @@ def move(ball):
         ball["x"] = screen_width - ball["size"]
         ball["speed_x"] = -ball["speed_x"]
     if ball["x"] <= ball["size"]:
-        ball["x"]=ball["size"]
+        ball["x"] = ball["size"]
         ball["speed_x"] = -ball["speed_x"]
     if ball["y"] >= screen_height - ball["size"]:
         ball["y"] = screen_height - ball["size"]
         ball["speed_y"] = -ball["speed_y"]
     if ball["y"] <= ball["size"]:
-        ball["y"] =ball["size"]
+        ball["y"] = ball["size"]
         ball["speed_y"] = -ball["speed_y"]
 
 
 def new_ball():
     for i in range(ball_in_second):
-        size = random.randint(1, 15)
+        size = random.randint(1, 5)
         ball = {
             "size": size,
             "x": random.randint(size, screen_width - size),
             "y": random.randint(size, screen_height - size),
             "speed_x": random.choice([-2, 2]),
             "speed_y": random.choice([-2, 2]),
+            "special_speed_y": 0,
             "rgb": [random.randint(1, 255), random.randint(1, 255), random.randint(1, 255)]
 
         }
@@ -103,45 +99,64 @@ def new_ball():
 def delete_all_balls():
     b.clear()
 
+def balls_special():
+    global rEGIM
+    rEGIM="special"
+def balls_special_up():
+    global rEGIM
+    if rEGIM == "special":
+        b["special_speed_y"] = -b["y"] / 480
+        for ball in b:
+
+            ball["y"] = ball["y"] + ball["special_speed_y"]
+
+
+def balls_fly():
+    global rEGIM, rEGIM_fly
+    rEGIM = "fly"
+    rEGIM_fly = "fly_up"
+
 
 def balls_fly_up():
-    global rEGIM
-    rEGIM = "fly_up"
-
-
-def balls_can_fly_up():
-
-    for f in b:
-        f["y"]=f["y"]-1
+    global rEGIM_fly
+    if rEGIM == "fly":
+        rEGIM_fly = "fly_up"
 
 
 def balls_fly_down():
-    global rEGIM
-    rEGIM = "fly_down"
+    global rEGIM_fly
+    if rEGIM == "fly":
+        rEGIM_fly = "fly_down"
 
-
-def balls_can_fly_down():
-
-    for f in b:
-        f["y"]=f["y"]+1
 
 def balls_fly_left():
-    global rEGIM
-    rEGIM = "fly_left"
-
-
-def balls_can_fly_left():
-
-    for f in b:
-        f["x"]=f["x"]-1
+    global rEGIM_fly
+    if rEGIM == "fly":
+        rEGIM_fly = "fly_left"
 
 
 def balls_fly_right():
-    global rEGIM
-    rEGIM = "fly_right"
+    global rEGIM_fly
+    if rEGIM == "fly":
+        rEGIM_fly = "fly_right"
 
 
-def balls_can_fly_right():
+def balls_can_fly():
+    for ball in b:
+        if rEGIM_fly == "fly_up":
+            ball["y"] = ball["y"] - 1
+        if rEGIM_fly == "fly_down":
+            ball["y"] = ball["y"] + 1
+        if rEGIM_fly == "fly_left":
+            ball["x"] = ball["x"] - 1
+        if rEGIM_fly == "fly_right":
+            ball["x"] = ball["x"] + 1
 
-    for f in b:
-        f["x"]=f["x"]+1
+        if ball["x"] >= screen_width - ball["size"]:
+            ball["x"] = screen_width - ball["size"]
+        if ball["x"] <= ball["size"]:
+            ball["x"] = ball["size"]
+        if ball["y"] >= screen_height - ball["size"]:
+            ball["y"] = screen_height - ball["size"]
+        if ball["y"] <= ball["size"]:
+            ball["y"] = ball["size"]

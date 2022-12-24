@@ -32,10 +32,14 @@ def ypravlrnie():
             if wq.key == pygame.K_2:
                 modul.balls_move()
             if wq.key == pygame.K_3:
-                modul.balls_fly_up()
+                modul.balls_fly()
             if wq.key == pygame.K_4:
-                modul.balls_fly_down()
-            if wq.key == pygame.K_5:
+                modul.balls_special()
+            if wq.key == pygame.K_w:
+                modul.balls_fly_up()
+            if wq.key == pygame.K_a:
                 modul.balls_fly_left()
-            if wq.key == pygame.K_6:
+            if wq.key == pygame.K_d:
                 modul.balls_fly_right()
+            if wq.key == pygame.K_s:
+                modul.balls_fly_down()
