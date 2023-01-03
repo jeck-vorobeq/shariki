@@ -80,6 +80,8 @@ def move(ball):
 
 
 def new_ball():
+    if rEGIM == "special":
+        return
     for i in range(ball_in_second):
         size = random.randint(1, 5)
         ball = {
@@ -89,6 +91,7 @@ def new_ball():
             "speed_x": random.choice([-2, 2]),
             "speed_y": random.choice([-2, 2]),
             "special_speed_y": 0,
+            "special_speed_x": 0,
             "rgb": [random.randint(1, 255), random.randint(1, 255), random.randint(1, 255)]
 
         }
@@ -99,16 +102,29 @@ def new_ball():
 def delete_all_balls():
     b.clear()
 
+
 def balls_special():
     global rEGIM
-    rEGIM="special"
+    rEGIM = "special"
+    for ball in b:
+        ball["special_speed_y"] = -ball["y"] / 480
+        ball["special_speed_x"] = ball["x"] / 480
+
+
 def balls_special_up():
     global rEGIM
     if rEGIM == "special":
-        b["special_speed_y"] = -b["y"] / 480
-        for ball in b:
 
+        for ball in b:
             ball["y"] = ball["y"] + ball["special_speed_y"]
+            if ball["y"] >= screen_height - ball["size"]:
+                ball["y"] = screen_height - ball["size"]
+            if ball["y"] <= ball["size"]:
+                ball["y"] = ball["size"]
+            if ball["x"]<screen_width:
+                ball["x"] = ball["x"] + ball["special_speed_x"]
+            if ball["x"]>screen_width:
+                ball["x"] = ball["x"] - ball["special_speed_x"]
 
 
 def balls_fly():
