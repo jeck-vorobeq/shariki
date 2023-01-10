@@ -88,8 +88,8 @@ def new_ball():
             "size": size,
             "x": random.randint(size, screen_width - size),
             "y": random.randint(size, screen_height - size),
-            "speed_x": random.randint(-10, 10),
-            "speed_y": random.randint(-10, 10),
+            "speed_x": random.randint(-3, 3),
+            "speed_y": random.randint(-3, 3),
             "special_speed_y": 0,
             "special_speed_x": 0,
             "rgb": [random.randint(1, 255), random.randint(1, 255), random.randint(1, 255)]
@@ -117,7 +117,7 @@ def balls_special():
 def balls_special_up():
     global rEGIM,counter_fps
     if counter_fps>480:
-
+        rEGIM="move"
         return
     else:
         counter_fps = counter_fps + 1
