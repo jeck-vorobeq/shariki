@@ -32,7 +32,7 @@ def weiv():
         screen.blit(text, [12, 150])
         text = answered.render("полёт шаров к границам - кл 3 + wasd", True, [r, g, b], [0, 0, 0])
         screen.blit(text, [12, 175])
-        text = answered.render("фокусы-покусы- кл 4", True, [r, g, b], [0, 0, 0])
+        text = answered.render("фокусы-покусы-клик", True, [r, g, b], [0, 0, 0])
         screen.blit(text, [12, 200])
 
     pygame.display.flip()

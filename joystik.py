@@ -12,6 +12,8 @@ def ypravlrnie():
 
         if wq.type == pygame.QUIT:
             exit()
+        if wq.type == pygame.MOUSEBUTTONDOWN:
+            modul.balls_special(wq.pos)
         if wq.type == timer:
             modul.new_ball()
         if wq.type == pygame.KEYDOWN:
@@ -33,8 +35,6 @@ def ypravlrnie():
                 modul.balls_move()
             if wq.key == pygame.K_3:
                 modul.balls_fly()
-            if wq.key == pygame.K_4:
-                modul.balls_special()
             if wq.key == pygame.K_w:
                 modul.balls_fly_up()
             if wq.key == pygame.K_a:

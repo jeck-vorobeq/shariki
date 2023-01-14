@@ -103,15 +103,14 @@ def delete_all_balls():
     b.clear()
 
 
-def balls_special():
+def balls_special(pos_mouse):
     global rEGIM,counter_fps
     rEGIM = "special"
+
     counter_fps = 0
     for ball in b:
-
-            ball["special_speed_y"] = -ball["y"] / 480
-            ball["special_speed_x"] = (screen_width / 2 - ball["x"]) / 480
-
+            ball["special_speed_x"] = (pos_mouse[0]-ball["x"]) / 480
+            ball["special_speed_y"] = (pos_mouse[1]-ball["y"]) / 480
 
 
 def balls_special_up():
@@ -124,6 +123,7 @@ def balls_special_up():
         for ball in b:
 
             ball["x"] = ball["x"] + ball["special_speed_x"]
+
 
             ball["y"] = ball["y"] + ball["special_speed_y"]
             if ball["y"] >= screen_height - ball["size"]:
